@@ -170,17 +170,13 @@ button { font: inherit; }
   display: flex;
   align-items: center;
 }
-.hero__slide { width: 100%; }
-.hero__img { width: 100%; height: auto; }
-.hero__dots {
-  position: absolute;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
-  width: 56px;
-  height: 12px;
+.hero__img { width: 100%; height: auto; display: block; }
+.slider--overlay { height: 100%; display: flex; flex-direction: column; }
+.slider--overlay .slider__viewport {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
 }
-.hero__dots img { width: 56px; height: 12px; }
 
 /* ---------- Быстрые сервисы ---------- */
 .services { padding: 100px 0; }
@@ -201,11 +197,13 @@ button { font: inherit; }
   border: 1px solid var(--line);
   color: var(--ink);
   text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
-.service--active {
-  background: var(--blue);
-  color: #fff;
+.service:hover {
+  border-color: var(--blue);
+  box-shadow: 0 10px 24px rgba(0, 121, 194, 0.12);
+  transform: translateY(-3px);
 }
 .service--wide {
   flex: 1 0 0%;
@@ -269,10 +267,25 @@ button { font: inherit; }
   display: flex;
   flex-direction: column;
 }
+.press-main__media {
+  display: block;
+  height: 376px;
+  overflow: hidden;
+}
 .press-main__img {
   width: 100%;
-  height: 376px;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.45s ease;
+}
+.press-main {
+  transition: box-shadow 0.25s ease;
+}
+.press-main:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+.press-main:hover .press-main__img {
+  transform: scale(1.04);
 }
 .press-main__body {
   flex: 1 1 0%;
@@ -307,11 +320,27 @@ button { font: inherit; }
   height: 173px;
   display: flex;
 }
-.press-item__img {
+.press-item__media {
+  display: block;
   width: 220px;
   height: 173px;
   flex-shrink: 0;
+  overflow: hidden;
+}
+.press-item__img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.45s ease;
+}
+.press-item {
+  transition: box-shadow 0.25s ease;
+}
+.press-item:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+.press-item:hover .press-item__img {
+  transform: scale(1.06);
 }
 .press-item__body {
   flex: 1 1 0%;
@@ -490,13 +519,21 @@ button { font: inherit; }
   align-items: flex-start;
   gap: 20px;
 }
+.info__media {
+  display: block;
+  width: 310px;
+  height: 186px;
+  overflow: hidden;
+}
 .info__row img {
   width: 310px;
   height: 186px;
   object-fit: cover;
+  transition: transform 0.4s ease;
 }
-.info__dots { width: 56px; height: 12px; }
-.info__dots img { width: 56px; height: 12px; }
+.info__row img:hover {
+  transform: scale(1.05);
+}
 
 /* ---------- Футер ---------- */
 .footer {
@@ -554,3 +591,88 @@ button { font: inherit; }
   justify-content: center;
 }
 .footer__social img { width: 20px; height: 20px; }
+
+/* ============================================================
+   Слайдеры
+   ============================================================ */
+.slider { position: relative; width: 100%; }
+.slider__viewport { overflow: hidden; }
+.slider__track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.slider__page {
+  flex: 0 0 100%;
+  width: 100%;
+}
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.slider--overlay .slider__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+}
+.slider__dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #a6adb3;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.slider__dot.is-active { background: var(--blue); }
+.slider__dot:hover { transform: scale(1.2); }
+
+.info__wrap .slider { width: 100%; }
+.info__wrap .slider__dots { margin-top: 18px; }
+
+/* ============================================================
+   Анимация при наведении (интерактивные элементы)
+   ============================================================ */
+.util { transition: color 0.2s ease; }
+.util:hover { color: var(--blue); }
+
+.nav__link { transition: color 0.2s ease; cursor: pointer; }
+.nav__link:hover { color: var(--blue); }
+.nav__link img { transition: transform 0.25s ease; }
+.nav__link:hover img { transform: rotate(180deg); }
+
+.iconbtn { transition: background-color 0.2s ease; border-radius: 8px; }
+.iconbtn:hover { background: #f2f8fc; }
+
+.logo { transition: opacity 0.2s ease; }
+.logo:hover { opacity: 0.8; }
+
+.btn-news { transition: background-color 0.2s ease, border-color 0.2s ease; }
+.btn-news:hover { background: #cdeffb; border-color: #005f9a; }
+
+.btn-outline { transition: background-color 0.2s ease, color 0.2s ease; }
+.btn-outline:hover { background: #fff; color: var(--blue); }
+
+.branch {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+.branch:hover {
+  border-color: var(--blue);
+  box-shadow: 0 10px 24px rgba(0, 121, 194, 0.10);
+  transform: translateY(-3px);
+}
+
+.footer__policy,
+.footer__copy a { transition: opacity 0.2s ease; }
+.footer__policy:hover,
+.footer__copy a:hover { opacity: 0.75; }
+.footer__social { transition: background-color 0.2s ease; border-radius: 8px; }
+.footer__social:hover { background: rgba(255, 255, 255, 0.15); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
