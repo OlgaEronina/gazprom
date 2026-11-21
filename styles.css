@@ -41,7 +41,7 @@ a { color: inherit; }
 button { font: inherit; }
 ul { margin: 0; padding: 0; list-style: none; }
 
-.page { overflow-x: hidden; }
+.page { overflow-x: clip; }
 
 .container {
   width: 100%;
@@ -656,6 +656,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   flex: 0 0 100%;
   width: 100%;
 }
+.slider__page--mob { display: none; }
 .slider__dots {
   display: flex;
   justify-content: center;
@@ -692,8 +693,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 
   .container { padding: 0 10px; }
 
-  /* Шапка: синяя полоса 74px, логотип слева, бургер справа */
+  /* Шапка: синяя полоса 74px, логотип слева, бургер справа.
+     Закреплена вверху экрана при прокрутке (по запросу). */
   .header {
+    position: sticky;
+    top: 0;
     background: var(--blue);
     border-bottom: 0;
   }
@@ -756,6 +760,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   }
   .hero__img--desk { display: none; }
   .hero__img--mob { display: block; width: 100%; height: auto; }
+  .slider__page--mob { display: block; }
 
   /* Быстрые сервисы: вертикальный список карточек */
   .services { padding: 40px 0; background: transparent; }
