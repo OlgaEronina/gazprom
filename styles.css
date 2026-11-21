@@ -1,0 +1,556 @@
+/* ============================================================
+   Газпром газораспределение Великий Новгород — landing
+   Сверстано по макету Figma (Главная - Десктоп, 1440px)
+   ============================================================ */
+
+:root {
+  --blue: #0079c2;
+  --blue-start: #0079c2;
+  --blue-end: #1db28e;
+  --ink: #222222;
+  --muted: #6c7988;
+  --muted-2: #526779;
+  --line: #e9f2f9;
+  --bg-gray: #f7f6f7;
+  --orange: #f9800b;
+  --dot: #a6adb3;
+  --font: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-weight: 400;
+  color: var(--ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; }
+
+.page { overflow-x: hidden; }
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 70px;
+}
+
+/* ---------- Шапка ---------- */
+.header {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar {
+  background: var(--bg-gray);
+  padding: 10px 0;
+}
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.topbar__contacts {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.contact__label {
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--muted-2);
+}
+.contact__value {
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.contact__value--orange { color: var(--orange); }
+
+.topbar__utils {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.util {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.util img { width: 16px; height: 16px; }
+
+.mainbar {
+  background: #fff;
+  padding: 16px 0;
+}
+.mainbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.logo {
+  display: block;
+  flex-shrink: 0;
+  width: 150px;
+  height: 82px;
+}
+.logo img {
+  width: 150px;
+  height: 82px;
+  object-fit: cover;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.nav__link {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav__link img { width: 16px; height: 16px; }
+
+.mainbar__icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.iconbtn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.iconbtn img { width: 24px; height: 24px; }
+
+/* ---------- Слайдер ---------- */
+.hero { background: #fff; }
+.hero__inner {
+  position: relative;
+  height: 517px;
+  display: flex;
+  align-items: center;
+}
+.hero__slide { width: 100%; }
+.hero__img { width: 100%; height: auto; }
+.hero__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 12px;
+}
+.hero__dots img { width: 56px; height: 12px; }
+
+/* ---------- Быстрые сервисы ---------- */
+.services { padding: 100px 0; }
+.services__grid {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.service {
+  width: 247px;
+  height: 180px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.service--active {
+  background: var(--blue);
+  color: #fff;
+}
+.service--wide {
+  flex: 1 0 0%;
+  width: auto;
+  min-width: 0;
+}
+.service__icon { width: 40px; height: 40px; }
+.service__title {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.service__desc {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* ---------- Общие заголовки секций ---------- */
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.section-title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ---------- Пресс-центр ---------- */
+.press { padding: 100px 0; }
+.btn-news {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background: #e1f5fe;
+  border-bottom: 2px solid var(--blue);
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.press__grid {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  height: 560px;
+}
+.press-main {
+  width: 640px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+.press-main__img {
+  width: 100%;
+  height: 376px;
+  object-fit: cover;
+}
+.press-main__body {
+  flex: 1 1 0%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid var(--line);
+}
+.date {
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--muted);
+}
+.press-main__title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--ink);
+}
+.press-list {
+  width: 640px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.press-item {
+  height: 173px;
+  display: flex;
+}
+.press-item__img {
+  width: 220px;
+  height: 173px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.press-item__body {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.press-item__title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ---------- Интернет-приёмная ---------- */
+.reception { padding: 60px 0; }
+.reception__card {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  padding: 40px;
+  background: linear-gradient(69.15276023839772deg, var(--blue-start) 20.969%, var(--blue-end) 101.56%);
+}
+.reception__left {
+  width: 710px;
+  flex-shrink: 0;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+.reception__text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.reception__title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+.reception__sub {
+  margin: 0;
+  width: 608px;
+  max-width: 100%;
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #fff;
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.reception__right {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+.reception__photo {
+  width: 150px;
+  height: 200px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.reception__person {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 4px;
+}
+.reception__name {
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #fff;
+}
+.reception__role {
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #fff;
+}
+
+/* ---------- География и филиалы ---------- */
+.geo { padding: 100px 0; }
+.geo__grid {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.geo__map {
+  flex: 1 1 0%;
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 377 / 283;
+  object-fit: cover;
+}
+.geo__list {
+  width: 640px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.branch {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 18px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+.branch--active { background: var(--blue); }
+.branch__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.branch__title {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--ink);
+}
+.branch__addr {
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--muted);
+}
+.branch--active .branch__title,
+.branch--active .branch__addr { color: #fff; }
+.branch__arrow {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.branch__arrow img { width: 16px; height: 16px; }
+
+/* ---------- Полезная информация ---------- */
+.info { padding: 100px 0; }
+.info__wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.info__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.info__row img {
+  width: 310px;
+  height: 186px;
+  object-fit: cover;
+}
+.info__dots { width: 56px; height: 12px; }
+.info__dots img { width: 56px; height: 12px; }
+
+/* ---------- Футер ---------- */
+.footer {
+  background: var(--blue);
+  border-bottom: 1px solid var(--line);
+  padding: 26px 0;
+}
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.footer__logo {
+  position: relative;
+  width: 150px;
+  height: 82px;
+  overflow: hidden;
+}
+.footer__logo img {
+  position: absolute;
+  left: 0;
+  top: -16.46%;
+  width: 100%;
+  height: 147.36%;
+}
+.footer__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.footer__copy {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #fff;
+}
+.footer__copy a {
+  color: #fff;
+  text-decoration: underline;
+}
+.footer__policy {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+}
+.footer__social {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer__social img { width: 20px; height: 20px; }
