@@ -19,6 +19,25 @@
     });
   });
 
+  // Мегаменю: открывается по бургеру (десктоп), закрывается крестиком.
+  // В мобильной версии панель скрыта стилями — макета для неё нет.
+  var header = document.getElementById("site-header");
+  var openBtn = document.querySelector("[data-menu-open]");
+  var closeBtn = document.querySelector("[data-menu-close]");
+  function setMenu(open) {
+    if (!header || !openBtn) return;
+    header.classList.toggle("is-menu-open", open);
+    openBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  if (openBtn) {
+    openBtn.addEventListener("click", function () {
+      setMenu(!header.classList.contains("is-menu-open"));
+    });
+  }
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function () { setMenu(false); });
+  }
+
   // Слайдеры
   // Каждый слайдер — это блок с data-slider.
   // Внутри: .slider__track > .slider__page (один слайд = одна .slider__page),
