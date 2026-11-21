@@ -24,18 +24,66 @@
   var header = document.getElementById("site-header");
   var openBtn = document.querySelector("[data-menu-open]");
   var closeBtn = document.querySelector("[data-menu-close]");
-  function setMenu(open) {
-    if (!header || !openBtn) return;
+  var panel = document.getElementById("megamenu");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var menuOpen = false;
+  var menuAnim = null;
+
+  // Эффект «джинна»: панель вытягивается из кнопки бургера и втягивается обратно.
+  function genieFrames() {
+    var r = openBtn.getBoundingClientRect();
+    var cx = r.left + r.width / 2;
+    var cy = r.top + r.height / 2;
+    var hw = r.width / 2;
+    var hh = r.height / 2;
+    var pin = function (x, y) { return x + "px " + y + "px"; };
+    var box = [pin(cx - hw, cy - hh), pin(cx + hw, cy - hh), pin(cx + hw, cy + hh), pin(cx - hw, cy + hh)].join(", ");
+    var funnel = ["0px 0px", "100% 0px", pin(cx + hw, cy + hh), pin(cx - hw, cy + hh)].join(", ");
+    var full = "0px 0px, 100% 0px, 100% 100%, 0px 100%";
+    return [
+      { clipPath: "polygon(" + box + ")", opacity: 0.4, offset: 0 },
+      { clipPath: "polygon(" + funnel + ")", opacity: 1, offset: 0.55 },
+      { clipPath: "polygon(" + full + ")", opacity: 1, offset: 1 }
+    ];
+  }
+  var genieTiming = { duration: 560, easing: "cubic-bezier(0.4, 0, 0.2, 1)", fill: "both" };
+
+  function setAria(open) {
     header.classList.toggle("is-menu-open", open);
     openBtn.setAttribute("aria-expanded", open ? "true" : "false");
   }
+
+  function openMenu() {
+    if (menuOpen) return;
+    menuOpen = true;
+    setAria(true);
+    if (menuAnim) menuAnim.cancel();
+    panel.style.display = "block";
+    if (reduceMotion) return;
+    menuAnim = panel.animate(genieFrames(), genieTiming);
+  }
+
+  function closeMenu() {
+    if (!menuOpen) return;
+    menuOpen = false;
+    setAria(false);
+    if (reduceMotion || !menuAnim) {
+      panel.style.display = "none";
+      return;
+    }
+    menuAnim.onfinish = function () {
+      if (!menuOpen) panel.style.display = "none";
+    };
+    menuAnim.reverse();
+  }
+
   if (openBtn) {
     openBtn.addEventListener("click", function () {
-      setMenu(!header.classList.contains("is-menu-open"));
+      if (menuOpen) closeMenu(); else openMenu();
     });
   }
   if (closeBtn) {
-    closeBtn.addEventListener("click", function () { setMenu(false); });
+    closeBtn.addEventListener("click", closeMenu);
   }
 
   // Слайдеры
