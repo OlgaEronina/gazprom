@@ -547,12 +547,28 @@ ul { margin: 0; padding: 0; list-style: none; }
   background: #fff;
   border-bottom: 1px solid var(--line);
 }
+.branch__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
 .branch__title {
   font-size: 16px;
   line-height: 1.4;
   font-weight: 600;
   color: var(--ink);
 }
+.branch__arrow {
+  display: none;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.branch__arrow img { width: 16px; height: 16px; }
 .branch__addr {
   font-size: 14px;
   line-height: 1.4;
@@ -977,6 +993,62 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 /* ============================================================
-   Пустая реализация hover / focus / active — макет их не содержит.
-   Стандартный фокус браузера (клавиатура) не переопределяется.
+   Состояния hover — по компонентам из Figma (узел 54:837).
+   Применяются только на устройствах с курсором, чтобы на сенсорных
+   экранах карточки не «залипали» после касания.
+   Фокус клавиатуры не переопределяется (стандартный индикатор браузера).
    ============================================================ */
+@media (hover: hover) {
+  /* Карточка быстрого сервиса: state=hover */
+  .service:hover {
+    background: var(--blue);
+    color: #fff;
+  }
+  .service:hover .service__title,
+  .service:hover .service__desc {
+    color: #fff;
+  }
+  .service:hover .service__icon {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Карточки новостей: state=hover (тень на всей карточке, фото без изменений) */
+  .press-main:hover,
+  .press-item:hover {
+    filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.06)) drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.12));
+  }
+
+  /* Карточка филиала: state=hover (синий фон, стрелка в белом блоке) */
+  .branch:hover {
+    background: var(--blue);
+  }
+  .branch:hover .branch__title,
+  .branch:hover .branch__addr {
+    color: #fff;
+  }
+  .branch:hover .branch__arrow {
+    display: flex;
+  }
+
+  /* Кнопка secondary (Все новости на десктопе): state=hover */
+  .btn-news:hover {
+    background: var(--blue);
+    border-bottom-color: var(--blue);
+    color: #fff;
+  }
+
+  /* Кнопка tertiary (Написать обращение): state=hover */
+  .btn-outline:hover {
+    background: #fff;
+    color: var(--blue);
+  }
+}
+
+/* Мобильная «Все новости» по макету — tertiary: состояние hover такое же */
+@media (max-width: 767px) and (hover: hover) {
+  .press .btn-news:hover {
+    background: #fff;
+    border-color: #fff;
+    color: var(--blue);
+  }
+}
