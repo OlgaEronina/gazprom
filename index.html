@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <!-- ============================================================
@@ -54,12 +54,89 @@
           </a>
 
           <nav class="nav" aria-label="Основная навигация">
-            <a class="nav__link" href="#">Абонентам <img src="assets/icon-caret-down.svg" alt="" width="16" height="16"></a>
-            <a class="nav__link" href="#">Газификация <img src="assets/icon-caret-down.svg" alt="" width="16" height="16"></a>
-            <a class="nav__link" href="#">Услуги и тарифы <img src="assets/icon-caret-down.svg" alt="" width="16" height="16"></a>
-            <a class="nav__link" href="#">О компании <img src="assets/icon-caret-down.svg" alt="" width="16" height="16"></a>
-            <a class="nav__link" href="#">Контакты <img src="assets/icon-caret-down.svg" alt="" width="16" height="16"></a>
-            <a class="nav__link nav__link--plain" href="#">Интернет-магазин</a>
+            <div class="nav__item">
+              <a class="nav__link" href="#" aria-haspopup="true" aria-expanded="false">Абонентам<span class="caret" aria-hidden="true"></span></a>
+              <div class="submenu submenu--wide" role="menu">
+                <div class="submenu__inner">
+                  <div class="submenu__col">
+                    <p class="submenu__title">Газовое оборудование</p>
+                    <div class="submenu__list">
+                      <a class="submenu__link" href="#">Техническое обслуживание ВДГО/ВКГО</a>
+                      <a class="submenu__link" href="#">Заключение договора на обслуживание</a>
+                      <a class="submenu__link" href="#">Ремонт газового оборудования</a>
+                      <a class="submenu__link" href="#">Диагностика оборудования</a>
+                    </div>
+                  </div>
+                  <div class="submenu__col">
+                    <p class="submenu__title">Заявки для физлиц</p>
+                    <div class="submenu__list">
+                      <a class="submenu__link" href="#">Заключить договор на техническое обслуживание ВКГО</a>
+                      <a class="submenu__link" href="#">Заказать техническое обслуживание, ремонт или замену оборудования</a>
+                    </div>
+                  </div>
+                  <div class="submenu__col">
+                    <p class="submenu__title">Счётчики газа</p>
+                    <div class="submenu__list">
+                      <a class="submenu__link" href="#">Установка и замена</a>
+                      <a class="submenu__link" href="#">Поверка счётчиков</a>
+                      <a class="submenu__link" href="#">Стоимость услуг</a>
+                    </div>
+                  </div>
+                  <div class="submenu__col">
+                    <p class="submenu__title">Безопасность</p>
+                    <div class="submenu__list">
+                      <a class="submenu__link" href="#">Правила пользования газом</a>
+                      <a class="submenu__link" href="#">Порядок проведения работ в охранных зонах</a>
+                      <a class="submenu__link" href="#">Актуальная информация</a>
+                    </div>
+                  </div>
+                  <div class="submenu__col">
+                    <p class="submenu__title">Помощь абонентам</p>
+                    <div class="submenu__list">
+                      <a class="submenu__link" href="#">Отключение газа</a>
+                      <a class="submenu__link" href="#">Центры обслуживания</a>
+                      <a class="submenu__link" href="#">Вопросы и ответы</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="nav__item">
+              <a class="nav__link" href="#" aria-haspopup="true" aria-expanded="false">Газификация<span class="caret" aria-hidden="true"></span></a>
+              <div class="submenu submenu--narrow" role="menu">
+                <div class="submenu__list submenu__list--flat">
+                  <a class="submenu__link" href="#">Развитие снабжения и газицикация Новгородской области</a>
+                  <a class="submenu__link" href="#">Вопросы о газификации и догазификации</a>
+                  <a class="submenu__link" href="#">Догазификация</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav__item">
+              <a class="nav__link" href="#">Услуги и тарифы<span class="caret" aria-hidden="true"></span></a>
+            </div>
+            <div class="nav__item">
+              <a class="nav__link" href="#" aria-haspopup="true" aria-expanded="false">О компании<span class="caret" aria-hidden="true"></span></a>
+              <div class="submenu submenu--narrow" role="menu">
+                <div class="submenu__list submenu__list--flat">
+                  <a class="submenu__link" href="#">Раскрытие информации</a>
+                  <a class="submenu__link" href="#">Руководство</a>
+                  <a class="submenu__link" href="#">Акционерам</a>
+                  <a class="submenu__link" href="#">Интернет-приёмная</a>
+                  <a class="submenu__link" href="#">Закупки</a>
+                  <a class="submenu__link" href="#">Охрана труда</a>
+                  <a class="submenu__link" href="#">Политика ООО «Газпром межрегионгаз» в области охраны труда, промышленной и пожарной безопасности, и безопасности дорожного движения</a>
+                  <a class="submenu__link" href="#">Система управления промышленной безопасностью на опасных производственных объектах</a>
+                  <a class="submenu__link" href="#">Эксплуатация газопроводов и газового оборудования</a>
+                  <a class="submenu__link" href="#">Центры приёма абонентов</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav__item">
+              <a class="nav__link" href="#">Контакты<span class="caret" aria-hidden="true"></span></a>
+            </div>
+            <div class="nav__item">
+              <a class="nav__link nav__link--plain" href="#">Интернет-магазин</a>
+            </div>
           </nav>
 
           <div class="mainbar__icons">
@@ -442,6 +519,6 @@
     </footer>
 
   </div>
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

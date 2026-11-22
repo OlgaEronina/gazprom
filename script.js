@@ -56,6 +56,7 @@
     if (menuOpen) return;
     menuOpen = true;
     setAria(true);
+    closeSubmenus();
     if (menuAnim) menuAnim.cancel();
     panel.style.display = "block";
     if (reduceMotion) return;
@@ -84,6 +85,67 @@
   if (closeBtn) {
     closeBtn.addEventListener("click", closeMenu);
   }
+
+  // Подменю пунктов навигации: открываются по клику на пункт.
+  // Положение: левый край — у пункта, верх — у нижней границы верхней полосы шапки.
+  var mainbar = header ? header.querySelector(".mainbar") : null;
+  var navItems = Array.prototype.slice.call(document.querySelectorAll(".nav__item"));
+
+  function placeSubmenu(item) {
+    var sub = item.querySelector(".submenu");
+    var link = item.querySelector(".nav__link");
+    if (!sub || !link || !mainbar) return;
+    var hr = header.getBoundingClientRect();
+    var lr = link.getBoundingClientRect();
+    var mr = mainbar.getBoundingClientRect();
+    sub.style.left = (lr.left - hr.left) + "px";
+    sub.style.top = (mr.bottom - hr.top) + "px";
+  }
+
+  function closeSubmenus() {
+    navItems.forEach(function (item) {
+      item.classList.remove("is-open");
+      var link = item.querySelector(".nav__link[aria-haspopup]");
+      if (link) link.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function toggleSubmenu(item) {
+    var link = item.querySelector(".nav__link");
+    var open = !item.classList.contains("is-open");
+    closeSubmenus();
+    if (open) {
+      placeSubmenu(item);
+      item.classList.add("is-open");
+      link.setAttribute("aria-expanded", "true");
+    }
+  }
+
+  navItems.forEach(function (item) {
+    var link = item.querySelector(".nav__link");
+    if (!link) return;
+    link.addEventListener("click", function (e) {
+      if (!item.querySelector(".submenu")) {
+        // Пункт без подменю в макете — ссылка-заглушка
+        e.preventDefault();
+        return;
+      }
+      e.preventDefault();
+      toggleSubmenu(item);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".nav__item")) closeSubmenus();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeSubmenus();
+  });
+  window.addEventListener("resize", function () {
+    navItems.forEach(function (item) {
+      if (item.classList.contains("is-open")) placeSubmenu(item);
+    });
+  });
 
   // Слайдеры: плавная смена слайдов (затухание + лёгкое приближение).
   // Структура: [data-slider] > .slider__viewport > .slider__track > .slider__page (слайды).
