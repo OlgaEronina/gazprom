@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
   <!-- ============================================================
@@ -215,21 +215,25 @@
       <!-- ===== Слайдер ===== -->
       <section class="hero">
         <div class="container hero__inner">
-          <div class="slider slider--overlay" data-slider data-autoplay="6000">
+          <div class="slider slider--overlay slider--fade" data-slider data-autoplay="6000">
             <div class="slider__viewport">
               <div class="slider__track">
                 <div class="slider__page">
-                  <img class="hero__img hero__img--desk" src="assets/hero.png"
+                  <img class="hero__img hero__img--desk" src="assets/hero-desktop-1.png"
                        alt="ГАЗ У ВАС! Подайте заявку на бесплатное подведение газовых сетей до границ вашего участка. CONNECTGAZ.RU, 8-800-250-31-04"
                        width="1300" height="421">
                   <img class="hero__img hero__img--mob" src="assets/hero-mobile.png"
                        alt="Подключи электронную квитанцию! Быстро, удобно, безопасно" width="373" height="203">
                 </div>
-                <div class="slider__page slider__page--mob">
+                <div class="slider__page">
+                  <img class="hero__img hero__img--desk" src="assets/hero-desktop-2.png"
+                       alt="Подключи электронную квитанцию! Быстро, удобно, безопасно" width="1300" height="421">
                   <img class="hero__img hero__img--mob" src="assets/hero-mobile-2.png"
                        alt="ГАЗ У ВАС! Подайте заявку на бесплатное подведение газовых сетей до границ вашего участка" width="373" height="203">
                 </div>
-                <div class="slider__page slider__page--mob">
+                <div class="slider__page">
+                  <img class="hero__img hero__img--desk" src="assets/hero-desktop-3.png"
+                       alt="Как заключить договор техобслуживания газового оборудования" width="1300" height="421">
                   <img class="hero__img hero__img--mob" src="assets/hero-mobile-3.png"
                        alt="Как заключить договор техобслуживания газового оборудования" width="373" height="203">
                 </div>
@@ -389,9 +393,21 @@
           </div>
 
           <div class="info__wrap">
-            <div class="slider" data-slider data-autoplay="6000">
+            <div class="slider slider--fade" data-slider data-autoplay="6000">
               <div class="slider__viewport">
                 <div class="slider__track">
+                  <div class="slider__page info__row">
+                    <span class="info__media"><img src="assets/info-1.png" alt="Личный кабинет «Мой газ»" width="310" height="186"></span>
+                    <span class="info__media"><img src="assets/info-2.png" alt="О газификации регионов России" width="310" height="186"></span>
+                    <span class="info__media"><img src="assets/info-3.png" alt="Хочешь газ? Подай заявку!" width="310" height="186"></span>
+                    <span class="info__media"><img src="assets/info-4.png" alt="Подайте заявку на получение услуг по газоснабжению" width="310" height="186"></span>
+                  </div>
+                  <div class="slider__page info__row">
+                    <span class="info__media"><img src="assets/info-1.png" alt="Личный кабинет «Мой газ»" width="310" height="186"></span>
+                    <span class="info__media"><img src="assets/info-2.png" alt="О газификации регионов России" width="310" height="186"></span>
+                    <span class="info__media"><img src="assets/info-3.png" alt="Хочешь газ? Подай заявку!" width="310" height="186"></span>
+                    <span class="info__media"><img src="assets/info-4.png" alt="Подайте заявку на получение услуг по газоснабжению" width="310" height="186"></span>
+                  </div>
                   <div class="slider__page info__row">
                     <span class="info__media"><img src="assets/info-1.png" alt="Личный кабинет «Мой газ»" width="310" height="186"></span>
                     <span class="info__media"><img src="assets/info-2.png" alt="О газификации регионов России" width="310" height="186"></span>
@@ -426,6 +442,6 @@
     </footer>
 
   </div>
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>

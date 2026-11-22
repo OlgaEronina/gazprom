@@ -2,6 +2,8 @@
 (function () {
   "use strict";
 
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   // Плавная прокрутка к якорям
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener("click", function (e) {
@@ -19,17 +21,14 @@
     });
   });
 
-  // Мегаменю: открывается по бургеру (десктоп), закрывается крестиком.
-  // В мобильной версии панель скрыта стилями — макета для неё нет.
+  // Мегаменю: эффект «джинна» из бургера и обратно
   var header = document.getElementById("site-header");
   var openBtn = document.querySelector("[data-menu-open]");
   var closeBtn = document.querySelector("[data-menu-close]");
   var panel = document.getElementById("megamenu");
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var menuOpen = false;
   var menuAnim = null;
 
-  // Эффект «джинна»: панель вытягивается из кнопки бургера и втягивается обратно.
   function genieFrames() {
     var r = openBtn.getBoundingClientRect();
     var cx = r.left + r.width / 2;
@@ -86,18 +85,17 @@
     closeBtn.addEventListener("click", closeMenu);
   }
 
-  // Слайдеры
-  // Один слайд = один элемент .slider__page внутри .slider__track.
-  // Учитываются только слайды, видимые на текущей ширине экрана
-  // (например, мобильные слайды скрыты на десктопе).
+  // Слайдеры: плавная смена слайдов (затухание + лёгкое приближение).
+  // Структура: [data-slider] > .slider__viewport > .slider__track > .slider__page (слайды).
+  // Видны только слайды, доступные на текущей ширине экрана.
   // Точки создаются автоматически в [data-dots].
-  // data-autoplay — пауза между сменой слайдов, в миллисекундах.
+  // data-autoplay — пауза между слайдами в миллисекундах.
   function initSlider(root) {
     var track = root.querySelector(".slider__track");
     var dotsWrap = root.querySelector("[data-dots]");
     if (!track || !dotsWrap) return null;
 
-    var autoplay = parseInt(root.getAttribute("data-autoplay") || "0", 10);
+    var autoplay = reduceMotion ? 0 : parseInt(root.getAttribute("data-autoplay") || "0", 10);
     var pages = [];
     var current = 0;
     var timer = null;
@@ -126,9 +124,10 @@
     function go(i) {
       if (pages.length === 0) return;
       current = ((i % pages.length) + pages.length) % pages.length;
-      track.style.transform = "translateX(-" + current * 100 + "%)";
+      pages.forEach(function (p, j) { p.classList.toggle("is-active", j === current); });
       Array.prototype.forEach.call(dotsWrap.children, function (d, j) {
         d.classList.toggle("is-active", j === current);
+        d.setAttribute("aria-current", j === current ? "true" : "false");
       });
     }
 
@@ -136,12 +135,10 @@
       stop();
       pages = visiblePages();
       dotsWrap.innerHTML = "";
-      current = 0;
-      track.style.transform = "translateX(0)";
       pages.forEach(function (_, i) {
         var dot = document.createElement("button");
         dot.type = "button";
-        dot.className = "slider__dot" + (i === 0 ? " is-active" : "");
+        dot.className = "slider__dot";
         dot.setAttribute("aria-label", "Показать слайд " + (i + 1));
         dot.addEventListener("click", function () {
           go(i);
@@ -149,6 +146,7 @@
         });
         dotsWrap.appendChild(dot);
       });
+      go(0);
       start();
     }
 
