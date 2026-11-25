@@ -24,10 +24,16 @@
   // Мегаменю: эффект «джинна» из бургера и обратно
   var header = document.getElementById("site-header");
   var openBtn = document.querySelector("[data-menu-open]");
-  var closeBtn = document.querySelector("[data-menu-close]");
-  var panel = document.getElementById("megamenu");
+  var mobilePanel = document.getElementById("mobile-menu");
+  var desktopPanel = document.getElementById("megamenu");
+
+  function getPanel() {
+    return window.matchMedia("(max-width: 767px)").matches ? mobilePanel : desktopPanel;
+  }
+
   var menuOpen = false;
   var menuAnim = null;
+  var activePanel = null;
 
   function genieFrames() {
     var r = openBtn.getBoundingClientRect();
@@ -48,15 +54,29 @@
   var genieTiming = { duration: 560, easing: "cubic-bezier(0.4, 0, 0.2, 1)", fill: "both" };
 
   function setAria(open) {
+    var panel = activePanel || getPanel();
     header.classList.toggle("is-menu-open", open);
     openBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    if (panel) panel.setAttribute("aria-hidden", open ? "false" : "true");
   }
 
   function openMenu() {
     if (menuOpen) return;
+    var panel = getPanel();
+    if (!panel) return;
     menuOpen = true;
+    activePanel = panel;
     setAria(true);
     closeSubmenus();
+
+    if (panel.id === "mobile-menu") {
+      panel.classList.add("is-open");
+      document.body.classList.add("menu-open");
+      var closeBtn = panel.querySelector("[data-menu-close]");
+      if (closeBtn) closeBtn.focus();
+      return;
+    }
+
     if (menuAnim) menuAnim.cancel();
     panel.style.display = "block";
     if (reduceMotion) return;
@@ -65,8 +85,19 @@
 
   function closeMenu() {
     if (!menuOpen) return;
+    var panel = activePanel || getPanel();
     menuOpen = false;
+    activePanel = null;
     setAria(false);
+
+    if (panel && panel.id === "mobile-menu") {
+      panel.classList.remove("is-open");
+      document.body.classList.remove("menu-open");
+      if (openBtn) openBtn.focus();
+      return;
+    }
+
+    if (!panel) return;
     if (reduceMotion || !menuAnim) {
       panel.style.display = "none";
       return;
@@ -82,9 +113,11 @@
       if (menuOpen) closeMenu(); else openMenu();
     });
   }
-  if (closeBtn) {
-    closeBtn.addEventListener("click", closeMenu);
-  }
+  [mobilePanel, desktopPanel].forEach(function (p) {
+    if (!p) return;
+    var btn = p.querySelector("[data-menu-close]");
+    if (btn) btn.addEventListener("click", closeMenu);
+  });
 
   // Подменю пунктов навигации: открываются по клику на пункт.
   // Положение: левый край — у пункта, верх — у нижней границы верхней полосы шапки.
@@ -139,9 +172,43 @@
     if (!e.target.closest(".nav__item")) closeSubmenus();
   });
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeSubmenus();
+    if (e.key === "Escape") {
+      if (menuOpen) closeMenu();
+      closeSubmenus();
+    }
   });
+
+  // Мобильное меню: аккордеон. Одновременно открыт один раздел.
+  var mobileMenu = document.getElementById("mobile-menu");
+  if (mobileMenu) {
+    var accordionButtons = mobileMenu.querySelectorAll(".mobile-menu__link[aria-controls]");
+    accordionButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var item = btn.closest(".mobile-menu__item");
+        var willOpen = !item.classList.contains("is-open");
+
+        mobileMenu.querySelectorAll(".mobile-menu__item.is-open").forEach(function (openItem) {
+          openItem.classList.remove("is-open");
+          var openButton = openItem.querySelector(".mobile-menu__link[aria-controls]");
+          if (openButton) openButton.setAttribute("aria-expanded", "false");
+        });
+
+        if (willOpen) {
+          item.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+
+    var mobileSearch = mobileMenu.querySelector(".mobile-menu__search");
+    if (mobileSearch) {
+      mobileSearch.addEventListener("submit", function (e) {
+        e.preventDefault();
+      });
+    }
+  }
   window.addEventListener("resize", function () {
+    if (menuOpen) closeMenu();
     navItems.forEach(function (item) {
       if (item.classList.contains("is-open")) placeSubmenu(item);
     });
