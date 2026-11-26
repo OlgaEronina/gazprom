@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=6">
-  <link rel="stylesheet" href="press.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="press.css?v=9">
 </head>
 <body>
   <div class="page">
@@ -48,102 +48,53 @@
           </a>
 
           <nav class="nav" aria-label="Основная навигация">
-            <div class="nav__item">
-              <a class="nav__link" href="#" aria-haspopup="true" aria-expanded="false">Абонентам<span class="caret" aria-hidden="true"></span></a>
-              <div class="submenu submenu--wide" role="menu">
-                <div class="submenu__inner">
-                  <div class="submenu__col">
-                    <p class="submenu__title">Газовое оборудование</p>
-                    <div class="submenu__list">
-                      <a class="submenu__link" href="#">Техническое обслуживание ВДГО/ВКГО</a>
-                      <a class="submenu__link" href="#">Заключение договора на обслуживание</a>
-                      <a class="submenu__link" href="#">Ремонт газового оборудования</a>
-                      <a class="submenu__link" href="#">Диагностика оборудования</a>
-                      <a class="submenu__link" href="#">Нормативные документы</a>
-                    </div>
-                  </div>
-                  <div class="submenu__col">
-                    <p class="submenu__title">Счётчики газа</p>
-                    <div class="submenu__list">
-                      <a class="submenu__link" href="#">Установка и замена</a>
-                      <a class="submenu__link" href="#">Поверка счётчиков</a>
-                      <a class="submenu__link" href="#">Стоимость услуг</a>
-                    </div>
-                  </div>
-                  <div class="submenu__col">
-                    <p class="submenu__title">Безопасность</p>
-                    <div class="submenu__list">
-                      <a class="submenu__link" href="#">Правила пользования газом</a>
-                      <a class="submenu__link" href="#">Порядок проведения работ в охранных зонах</a>
-                      <a class="submenu__link" href="#">Актуальная информация</a>
-                      <a class="submenu__link" href="#">Инструкция по безопасному использованию газа</a>
-                    </div>
-                  </div>
-                  <div class="submenu__col">
-                    <p class="submenu__title">Помощь абонентам</p>
-                    <div class="submenu__list">
-                      <a class="submenu__link" href="#">Отключение газа</a>
-                      <a class="submenu__link" href="#">Центры обслуживания</a>
-                      <a class="submenu__link" href="#">Вопросы и ответы</a>
-                      <a class="submenu__link" href="#">Услуги и тарифы</a>
-                      <a class="submenu__link" href="#">Прочие услуги</a>
-                    </div>
-                  </div>
+            <div class="nav__item" data-section="subscribers">
+              <a class="nav__link" href="subscribers.html" aria-haspopup="true" aria-expanded="false">Абонентам<span class="caret" aria-hidden="true"></span></a>
+              <div class="submenu submenu--narrow" role="menu">
+                <div class="submenu__list submenu__list--flat">
+                  <a class="submenu__link" href="#">Техническое обслуживание ВДГО/ВКГО</a>
+                  <a class="submenu__link" href="#">Заключение договора на обслуживание</a>
+                  <a class="submenu__link" href="#">Стоимость услуг</a>
+                  <a class="submenu__link" href="#">Отключение газа</a>
+                  <a class="submenu__link submenu__link--all" href="subscribers.html">Все разделы</a>
                 </div>
               </div>
             </div>
-            <div class="nav__item">
-              <a class="nav__link" href="#" aria-haspopup="true" aria-expanded="false">Заявки<span class="caret" aria-hidden="true"></span></a>
-              <div class="submenu submenu--wide" role="menu">
-                <div class="submenu__inner">
-                  <div class="submenu__col">
-                    <p class="submenu__title">Физическим лицам</p>
-                    <div class="submenu__list">
-                      <a class="submenu__link" href="#">Заключить договор на техническое обслуживание ВКГО</a>
-                      <a class="submenu__link" href="#">Заказать техническое обслуживание, ремонт или замену оборудования</a>
-                    </div>
-                  </div>
-                  <div class="submenu__col">
-                    <p class="submenu__title">Юридическим лицам</p>
-                    <div class="submenu__list">
-                      <a class="submenu__link" href="#">Расчёт максимального расхода газа</a>
-                      <a class="submenu__link" href="#">Технические условия газоснабжения</a>
-                      <a class="submenu__link" href="#">Технологическое присоединение</a>
-                    </div>
-                  </div>
+            <div class="nav__item" data-section="applications">
+              <a class="nav__link" href="applications.html" aria-haspopup="true" aria-expanded="false">Заявки<span class="caret" aria-hidden="true"></span></a>
+              <div class="submenu submenu--narrow" role="menu">
+                <div class="submenu__list submenu__list--flat">
+                  <a class="submenu__link" href="#">Заключить договор на техническое обслуживание ВКГО</a>
+                  <a class="submenu__link" href="#">Заказать техническое обслуживание, ремонт или замену оборудования</a>
+                  <a class="submenu__link" href="#">Технологическое присоединение</a>
+                  <a class="submenu__link submenu__link--all" href="applications.html">Все разделы</a>
                 </div>
               </div>
             </div>
-            <div class="nav__item">
-              <a class="nav__link" href="#" aria-haspopup="true" aria-expanded="false">Газификация<span class="caret" aria-hidden="true"></span></a>
+            <div class="nav__item" data-section="gasification">
+              <a class="nav__link" href="gasification.html" aria-haspopup="true" aria-expanded="false">Газификация<span class="caret" aria-hidden="true"></span></a>
               <div class="submenu submenu--narrow" role="menu">
                 <div class="submenu__list submenu__list--flat">
                   <a class="submenu__link" href="#">Развитие газоснабжения и газификация Новгородской области</a>
                   <a class="submenu__link" href="#">Вопросы о газификации и догазификации</a>
                   <a class="submenu__link" href="#">Догазификация</a>
+                  <a class="submenu__link submenu__link--all" href="gasification.html">Все разделы</a>
                 </div>
               </div>
             </div>
-            <div class="nav__item">
-              <a class="nav__link" href="#" aria-haspopup="true" aria-expanded="false">О компании<span class="caret" aria-hidden="true"></span></a>
+            <div class="nav__item" data-section="about">
+              <a class="nav__link" href="about.html" aria-haspopup="true" aria-expanded="false">О компании<span class="caret" aria-hidden="true"></span></a>
               <div class="submenu submenu--narrow" role="menu">
                 <div class="submenu__list submenu__list--flat">
                   <a class="submenu__link" href="#">Руководство</a>
                   <a class="submenu__link" href="#">Акционерам</a>
-                  <a class="submenu__link" href="https://receptiondzo.mrgeng.ru/?id=86">Интернет-приёмная</a>
                   <a class="submenu__link" href="#">Вакансии</a>
-                  <a class="submenu__link" href="#">Раскрытие информации</a>
                   <a class="submenu__link" href="#">Закупки</a>
-                  <a class="submenu__link" href="#">Охрана труда</a>
-                  <a class="submenu__link" href="#">Политика обработки персональных данных</a>
-                  <a class="submenu__link" href="#">Политика ООО «Газпром межрегионгаз» в области охраны труда, промышленной и пожарной безопасности, и безопасности дорожного движения</a>
-                  <a class="submenu__link" href="#">Система управления промышленной безопасностью на опасных производственных объектах</a>
-                  <a class="submenu__link" href="#">Эксплуатация газопроводов и газового оборудования</a>
-                  <a class="submenu__link" href="#">Сведения об образовательной организации</a>
+                  <a class="submenu__link submenu__link--all" href="about.html">Все разделы</a>
                 </div>
               </div>
             </div>
-            <div class="nav__item">
+            <div class="nav__item is-current" data-section="press">
               <a class="nav__link" href="press-center.html#news" aria-haspopup="true" aria-expanded="false">Пресс-центр<span class="caret" aria-hidden="true"></span></a>
               <div class="submenu submenu--narrow" role="menu">
                 <div class="submenu__list submenu__list--flat">
@@ -152,11 +103,12 @@
                   <a class="submenu__link" href="press-center.html#contacts">Контакты пресс-службы</a>
                   <a class="submenu__link" href="press-center.html#media">СМИ о нас</a>
                   <a class="submenu__link" href="press-center.html#links">Полезные ресурсы</a>
+                  <a class="submenu__link submenu__link--all" href="press-center.html">Все разделы</a>
                 </div>
               </div>
             </div>
-            <div class="nav__item">
-              <a class="nav__link" href="#">Контакты</a>
+            <div class="nav__item" data-section="contacts">
+              <a class="nav__link" href="contacts.html">Контакты</a>
             </div>
             <div class="nav__item">
               <a class="nav__link" href="http://shop.novoblgaz.ru">Интернет-магазин</a>
@@ -190,14 +142,14 @@
           <div class="megamenu__cols">
             <div class="megamenu__col">
               <div class="megamenu__block">
-                <p class="megamenu__title">Заявки для физлиц</p>
+                <p class="megamenu__title"><a href="applications.html">Заявки для физлиц</a></p>
                 <ul class="megamenu__list">
                   <li>Заключить договор на техническое обслуживание ВКГО</li>
                   <li>Заказать техническое обслуживание, ремонт или замену оборудования</li>
                 </ul>
               </div>
               <div class="megamenu__block">
-                <p class="megamenu__title">Заявки для юрлиц</p>
+                <p class="megamenu__title"><a href="applications.html">Заявки для юрлиц</a></p>
                 <ul class="megamenu__list">
                   <li>Расчёт максимального расхода газа</li>
                   <li>Технические условия газоснабжения</li>
@@ -205,7 +157,7 @@
                 </ul>
               </div>
               <div class="megamenu__block">
-                <p class="megamenu__title">Газификация</p>
+                <p class="megamenu__title"><a href="gasification.html">Газификация</a></p>
                 <ul class="megamenu__list">
                   <li>Развитие газоснабжения и газификация Новгородской области</li>
                   <li>Вопросы о газификации и догазификации</li>
@@ -216,7 +168,7 @@
 
             <div class="megamenu__col">
               <div class="megamenu__block">
-                <p class="megamenu__title">Абонентам</p>
+                <p class="megamenu__title"><a href="subscribers.html">Абонентам</a></p>
                 <ul class="megamenu__list">
                   <li>Техническое обслуживание ВДГО/ВКГО</li>
                   <li>Заключение договора на обслуживание</li>
@@ -241,7 +193,7 @@
 
             <div class="megamenu__col">
               <div class="megamenu__block">
-                <p class="megamenu__title">О компании</p>
+                <p class="megamenu__title"><a href="about.html">О компании</a></p>
                 <ul class="megamenu__list">
                   <li>Руководство</li>
                   <li>Акционерам</li>
@@ -258,9 +210,10 @@
                 </ul>
               </div>
               <div class="megamenu__block">
-                <p class="megamenu__title">Пресс-центр</p>
+                <p class="megamenu__title"><a href="press-center.html">Пресс-центр</a></p>
                 <ul class="megamenu__list">
                   <li><a href="press-center.html#news">Новости</a></li>
+                  <li><a href="press-center.html#quest">Вопрос-ответ</a></li>
                   <li><a href="press-center.html#pobeda">День Великой Победы</a></li>
                   <li><a href="press-center.html#contacts">Контакты пресс-службы</a></li>
                   <li><a href="press-center.html#media">СМИ о нас</a></li>
@@ -268,10 +221,10 @@
                 </ul>
               </div>
               <div class="megamenu__block">
-                <p class="megamenu__title">Контакты</p>
+                <p class="megamenu__title"><a href="contacts.html">Контакты</a></p>
                 <ul class="megamenu__list">
-                  <li>Управление</li>
-                  <li>Центры приёма абонентов</li>
+                  <li><a href="contacts.html">Управление</a></li>
+                  <li><a href="contacts.html#centers">Центры приёма абонентов</a></li>
                 </ul>
               </div>
             </div>
@@ -298,6 +251,7 @@
                 <span>Абонентам</span><span class="mobile-menu__icon" aria-hidden="true"></span>
               </button>
               <div class="mobile-menu__sub" id="mm-subscribers">
+                <a href="subscribers.html">Все разделы</a>
                 <a href="#">Техническое обслуживание ВДГО/ВКГО</a>
                 <a href="#">Заключение договора на обслуживание</a>
                 <a href="#">Ремонт газового оборудования</a>
@@ -323,11 +277,12 @@
                 <span>Заявки</span><span class="mobile-menu__icon" aria-hidden="true"></span>
               </button>
               <div class="mobile-menu__sub" id="mm-requests">
+                <a href="applications.html">Все разделы</a>
                 <a href="#">Заключить договор на техническое обслуживание ВКГО</a>
                 <a href="#">Заказать техническое обслуживание, ремонт или замену оборудования</a>
-                <a href="#">Расчёт максимального расхода газа (юрлица)</a>
-                <a href="#">Технические условия газоснабжения (юрлица)</a>
-                <a href="#">Технологическое присоединение (юрлица)</a>
+                <a href="#">Расчёт максимального расхода газа</a>
+                <a href="#">Технические условия газоснабжения</a>
+                <a href="#">Технологическое присоединение</a>
               </div>
             </div>
 
@@ -336,6 +291,7 @@
                 <span>Газификация</span><span class="mobile-menu__icon" aria-hidden="true"></span>
               </button>
               <div class="mobile-menu__sub" id="mm-gas">
+                <a href="gasification.html">Все разделы</a>
                 <a href="#">Развитие газоснабжения и газификация Новгородской области</a>
                 <a href="#">Вопросы о газификации и догазификации</a>
                 <a href="#">Догазификация</a>
@@ -347,6 +303,7 @@
                 <span>О компании</span><span class="mobile-menu__icon" aria-hidden="true"></span>
               </button>
               <div class="mobile-menu__sub" id="mm-about">
+                <a href="about.html">Все разделы</a>
                 <a href="#">Руководство</a>
                 <a href="#">Акционерам</a>
                 <a href="https://receptiondzo.mrgeng.ru/?id=86">Интернет-приёмная</a>
@@ -367,7 +324,9 @@
                 <span>Пресс-центр</span><span class="mobile-menu__icon" aria-hidden="true"></span>
               </button>
               <div class="mobile-menu__sub" id="mm-press">
+                <a href="press-center.html">Все разделы</a>
                 <a href="press-center.html#news">Новости</a>
+                <a href="press-center.html#quest">Вопрос-ответ</a>
                 <a href="press-center.html#pobeda">День Великой Победы</a>
                 <a href="press-center.html#contacts">Контакты пресс-службы</a>
                 <a href="press-center.html#media">СМИ о нас</a>
@@ -376,7 +335,7 @@
             </div>
 
             <div class="mobile-menu__item mobile-menu__item--single">
-              <a class="mobile-menu__link mobile-menu__link--single" href="#">Контакты</a>
+              <a class="mobile-menu__link mobile-menu__link--single" href="contacts.html">Контакты</a>
             </div>
 
             <div class="mobile-menu__item mobile-menu__item--single">
@@ -595,7 +554,7 @@
 
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=5"></script>
   <script src="press.js?v=4"></script>
 </body>
 </html>

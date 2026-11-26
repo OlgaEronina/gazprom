@@ -335,6 +335,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 .megamenu__list li { list-style: none; }
 .megamenu__list a { color: inherit; text-decoration: none; }
 .megamenu__list a:hover { text-decoration: underline; }
+.megamenu__title a { color: inherit; text-decoration: none; }
+.submenu__link--all { color: var(--blue); }
+.nav__item.is-current > .nav__link { color: var(--blue); }
 
 /* ---------- Слайдер (хиро) ---------- */
 .hero { background: #fff; }

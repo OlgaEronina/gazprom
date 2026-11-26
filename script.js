@@ -158,13 +158,13 @@
     var link = item.querySelector(".nav__link");
     if (!link) return;
     link.addEventListener("click", function (e) {
-      if (!item.querySelector(".submenu")) {
-        // Пункт без подменю в макете — ссылка-заглушка
+      if (item.querySelector(".submenu")) {
         e.preventDefault();
+        toggleSubmenu(item);
         return;
       }
-      e.preventDefault();
-      toggleSubmenu(item);
+      var href = link.getAttribute("href");
+      if (!href || href === "#") e.preventDefault();
     });
   });
 
