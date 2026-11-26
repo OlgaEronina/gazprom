@@ -725,7 +725,20 @@ a.pc-linkcard:hover .pc-linkcard__url { color: #fff; }
   line-height: 1.4;
   color: var(--muted-2);
 }
-.fm__consent input { margin-top: 2px; flex-shrink: 0; }
+.fm__consent input {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  flex-shrink: 0;
+  border: 1px solid #a6adb3;
+  background: #fff;
+  cursor: pointer;
+}
+.fm__consent input:checked {
+  border-color: var(--blue);
+  background: var(--blue) url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='11' viewBox='0 0 14 11'%3E%3Cpath d='M1 5.5 5 9.5 13 1.5' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") center / 14px 11px no-repeat;
+}
 .fm__actions { display: flex; justify-content: flex-end; }
 .fm__submit {
   width: 200px;

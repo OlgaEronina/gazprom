@@ -200,7 +200,7 @@
 
   var newsList = document.querySelector('[data-list="news"]');
   var newsPaged = Paged(newsList, document.querySelector('[data-pag="news"]'), PAGE_SIZE.news, function (n) {
-    return '<li class="pc-news__item"><a class="pc-news__card" href="https://www.novoblgaz.ru/press/news/' + n.id + '.html" target="_blank" rel="noopener">' +
+    return '<li class="pc-news__item"><a class="pc-news__card" href="news-cover.html">' +
       '<img class="pc-news__img" src="assets/press/news.png" alt="" width="311" height="185" loading="lazy">' +
       '<span class="pc-news__date">' + esc(n.date) + "</span>" +
       '<span class="pc-news__title">' + esc(n.title) + "</span></a></li>";

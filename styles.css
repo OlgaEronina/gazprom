@@ -433,6 +433,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
 }
 .press-main__media {
   display: block;
@@ -471,6 +472,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .press-item {
   height: 173px;
   display: flex;
+  text-decoration: none;
 }
 .press-item__media {
   display: block;
