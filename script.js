@@ -32,26 +32,22 @@
   }
 
   var menuOpen = false;
-  var menuAnim = null;
   var activePanel = null;
 
-  function genieFrames() {
-    var r = openBtn.getBoundingClientRect();
-    var cx = r.left + r.width / 2;
-    var cy = r.top + r.height / 2;
-    var hw = r.width / 2;
-    var hh = r.height / 2;
-    var pin = function (x, y) { return x + "px " + y + "px"; };
-    var box = [pin(cx - hw, cy - hh), pin(cx + hw, cy - hh), pin(cx + hw, cy + hh), pin(cx - hw, cy + hh)].join(", ");
-    var funnel = ["0px 0px", "100% 0px", pin(cx + hw, cy + hh), pin(cx - hw, cy + hh)].join(", ");
-    var full = "0px 0px, 100% 0px, 100% 100%, 0px 100%";
-    return [
-      { clipPath: "polygon(" + box + ")", opacity: 0.4, offset: 0 },
-      { clipPath: "polygon(" + funnel + ")", opacity: 1, offset: 0.55 },
-      { clipPath: "polygon(" + full + ")", opacity: 1, offset: 1 }
-    ];
+  function syncHeaderHeight() {
+    if (header) document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
   }
-  var genieTiming = { duration: 560, easing: "cubic-bezier(0.4, 0, 0.2, 1)", fill: "both" };
+
+  function lockScroll() {
+    var gap = window.innerWidth - document.documentElement.clientWidth;
+    document.body.classList.add("menu-open");
+    if (gap > 0) document.body.style.paddingRight = gap + "px";
+  }
+
+  function unlockScroll() {
+    document.body.classList.remove("menu-open");
+    document.body.style.paddingRight = "";
+  }
 
   function setAria(open) {
     var panel = activePanel || getPanel();
@@ -69,54 +65,49 @@
     setAria(true);
     closeSubmenus();
 
-    if (panel.id === "mobile-menu") {
-      panel.classList.add("is-open");
-      document.body.classList.add("menu-open");
-      var closeBtn = panel.querySelector("[data-menu-close]");
-      if (closeBtn) closeBtn.focus();
-      return;
-    }
+    if (panel.id !== "mobile-menu") syncHeaderHeight();
+    lockScroll();
+    panel.classList.add("is-open");
 
-    if (menuAnim) menuAnim.cancel();
-    panel.style.display = "block";
-    if (reduceMotion) return;
-    menuAnim = panel.animate(genieFrames(), genieTiming);
+    var closeBtn = panel.querySelector("[data-menu-close]");
+    if (closeBtn) closeBtn.focus({ preventScroll: true });
   }
 
-  function closeMenu() {
+  function closeMenu(restoreFocus) {
     if (!menuOpen) return;
     var panel = activePanel || getPanel();
     menuOpen = false;
     activePanel = null;
     setAria(false);
+    unlockScroll();
 
-    if (panel && panel.id === "mobile-menu") {
-      panel.classList.remove("is-open");
-      document.body.classList.remove("menu-open");
-      if (openBtn) openBtn.focus();
-      return;
-    }
-
-    if (!panel) return;
-    if (reduceMotion || !menuAnim) {
-      panel.style.display = "none";
-      return;
-    }
-    menuAnim.onfinish = function () {
-      if (!menuOpen) panel.style.display = "none";
-    };
-    menuAnim.reverse();
+    if (panel) panel.classList.remove("is-open");
+    if (restoreFocus && openBtn) openBtn.focus({ preventScroll: true });
   }
 
   if (openBtn) {
     openBtn.addEventListener("click", function () {
-      if (menuOpen) closeMenu(); else openMenu();
+      if (menuOpen) closeMenu(true); else openMenu();
     });
   }
   [mobilePanel, desktopPanel].forEach(function (p) {
     if (!p) return;
     var btn = p.querySelector("[data-menu-close]");
-    if (btn) btn.addEventListener("click", closeMenu);
+    if (btn) btn.addEventListener("click", function () { closeMenu(true); });
+  });
+
+  // Переход по ссылке внутри мегаменю закрывает панель
+  if (desktopPanel) {
+    desktopPanel.addEventListener("click", function (e) {
+      if (e.target.closest("a")) closeMenu(false);
+    });
+  }
+
+  // Клик вне области мегаменю закрывает его
+  document.addEventListener("click", function (e) {
+    if (!menuOpen || !activePanel || activePanel.id !== "megamenu") return;
+    if (e.target.closest("#megamenu") || e.target.closest("[data-menu-open]")) return;
+    closeMenu(false);
   });
 
   // Подменю пунктов навигации: открываются по клику на пункт.
@@ -173,7 +164,7 @@
   });
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
-      if (menuOpen) closeMenu();
+      if (menuOpen) closeMenu(true);
       closeSubmenus();
     }
   });
@@ -207,8 +198,15 @@
       });
     }
   }
+  var lastMobile = window.matchMedia("(max-width: 767px)").matches;
   window.addEventListener("resize", function () {
-    if (menuOpen) closeMenu();
+    var isMobile = window.matchMedia("(max-width: 767px)").matches;
+    if (menuOpen && isMobile !== lastMobile) {
+      closeMenu(false);
+    } else if (menuOpen && !isMobile) {
+      syncHeaderHeight();
+    }
+    lastMobile = isMobile;
     navItems.forEach(function (item) {
       if (item.classList.contains("is-open")) placeSubmenu(item);
     });

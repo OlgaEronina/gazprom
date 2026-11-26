@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body>
   <!-- ============================================================
@@ -126,15 +126,14 @@
               <img src="assets/icon-search.svg" alt="" width="24" height="24">
             </button>
             <button class="iconbtn iconbtn--burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="megamenu" data-menu-open>
-              <img class="icon-dark" src="assets/icon-burger.svg" alt="" width="24" height="24">
-              <img class="icon-light" src="assets/icon-burger-white.svg" alt="" width="24" height="24">
+              <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
             </button>
           </div>
         </div>
       </div>
 
       <!-- Мегаменю (состояние «expanded» из Figma) -->
-      <div class="megamenu" id="megamenu">
+      <div class="megamenu" id="megamenu" aria-hidden="true">
         <div class="megamenu__inner">
           <div class="megamenu__top">
             <div class="megamenu__search">
@@ -242,7 +241,7 @@
       </div>
 
       <!-- ===== Мобильное меню ===== -->
-      <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Мобильное меню">
+      <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Мобильное меню" aria-hidden="true">
         <div class="mobile-menu__inner">
           <div class="mobile-menu__top">
             <form class="mobile-menu__search" role="search" action="#">
@@ -586,6 +585,6 @@
     </footer>
 
   </div>
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>
