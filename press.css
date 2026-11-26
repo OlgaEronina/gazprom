@@ -463,20 +463,6 @@ a.pc-linkcard:hover .pc-linkcard__url { color: #fff; }
 }
 
 /* Контакты пресс-службы */
-.pc-links-block {
-  display: flex;
-  gap: 40px;
-  justify-content: flex-start;
-  margin-bottom: 40px;
-}
-.pc-links-block__mail,
-.pc-links-block__phone {
-  font-size: 20px;
-  line-height: 1.2;
-  font-weight: 600;
-  color: var(--blue);
-  text-decoration: none;
-}
 .pc-contact {
   display: flex;
   gap: 20px;
