@@ -41,7 +41,14 @@ a { color: inherit; }
 button { font: inherit; }
 ul { margin: 0; padding: 0; list-style: none; }
 
-.page { overflow-x: clip; }
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: clip;
+}
+.page > main { flex: 1 0 auto; }
+.page > .footer { margin-top: auto; }
 
 .container {
   width: 100%;
