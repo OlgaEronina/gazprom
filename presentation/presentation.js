@@ -26,7 +26,7 @@
       group: "Новости и публикации",
       name: "Новость с обложкой",
       src: "../news-cover.html",
-      mobile: false,
+      mobile: true,
       desc: "Статья с большой обложкой в начале"
     },
     {
@@ -34,7 +34,7 @@
       group: "Новости и публикации",
       name: "Новость с фотогалереей",
       src: "../news-gallery.html",
-      mobile: false,
+      mobile: true,
       desc: "Статья с блоком фотографий"
     },
     {
@@ -50,7 +50,7 @@
       group: "Новости и публикации",
       name: "Список новостей",
       src: "../press-center.html#news",
-      mobile: false,
+      mobile: true,
       desc: "Карточки новостей с постраничной навигацией"
     },
     {
@@ -58,7 +58,7 @@
       group: "Новости и публикации",
       name: "Актуальная информация",
       src: "../actual.html",
-      mobile: false,
+      mobile: true,
       desc: "Подборка актуальных материалов карточками"
     },
 
@@ -99,8 +99,16 @@
       group: "Разделы сайта",
       name: "Пресс-центр",
       src: "../press-center.html",
-      mobile: false,
+      mobile: true,
       desc: "Раздел с боковым меню: новости, вопросы, медиа"
+    },
+    {
+      id: "persons",
+      group: "Разделы сайта",
+      name: "Руководство",
+      src: "../persons.html",
+      mobile: true,
+      desc: "Руководство компании"
     },
     {
       id: "contacts",

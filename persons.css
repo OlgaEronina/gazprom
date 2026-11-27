@@ -1,0 +1,75 @@
+/* ============================================================
+   Страница «Руководство» (шаблон «Персоны»)
+   Сверено с макетом Figma «[Шаблон] - Персоны - Десктоп/Мобильный».
+   ============================================================ */
+
+.pers .pc-crumbs { padding: 40px 0; }
+
+.pers-head {
+  padding: 0 0 40px;
+}
+
+.pers-eyebrow {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.pers-title {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.pers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 310px);
+  gap: 40px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pers-card { min-width: 0; }
+
+.pers-photo {
+  display: block;
+  width: 210px;
+  height: 280px;
+  object-fit: cover;
+}
+
+.pers-name {
+  margin: 16px 0 0;
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.pers-role {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+@media (max-width: 1330px) {
+  .pers-grid { grid-template-columns: repeat(3, 310px); }
+}
+
+@media (max-width: 1000px) {
+  .pers-grid { grid-template-columns: repeat(2, 310px); }
+}
+
+@media (max-width: 767px) {
+  .pers .pc-crumbs { display: none; }
+  .pers-eyebrow { display: none; }
+  .pers-head { padding: 40px 0 30px; }
+  .pers-title { font-size: 26px; }
+  .pers-grid { grid-template-columns: 310px; }
+}

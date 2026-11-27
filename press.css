@@ -48,9 +48,13 @@
 }
 .pc-head__title {
   margin: 0;
-  font-size: 44px;
-  line-height: 1.2;
-  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .pc-head__title--md { font-size: 32px; }
 }
 
 /* Сетка: меню + контент */
@@ -520,23 +524,14 @@ a.pc-linkcard:hover .pc-linkcard__url { color: #fff; }
 @media (max-width: 767px) {
   .pc-crumbs { padding-top: 24px; }
   .pc-head { padding: 24px 0; }
-  .pc-head__title { font-size: 32px; }
-  .pc-layout { grid-template-columns: 1fr; row-gap: 24px; }
-  .pc-menu {
-    flex-direction: row;
-    overflow-x: auto;
-    border: 0;
-  }
-  .pc-menu__item {
-    flex-shrink: 0;
-    min-height: 44px;
-    padding: 0 14px;
-    border: 1px solid var(--line);
-    font-size: 14px;
-  }
+  .pc-head__title { font-size: 26px; }
+  .pc-layout { grid-template-columns: 1fr; }
+  .pc-side { display: none; }
   .pc-news,
   .pc-links { grid-template-columns: 1fr; }
-  .pc-news__img { width: 100%; }
+  .pc-news__img { width: 100%; height: 260px; }
+  .pc-news__title { font-weight: 600; }
+  .fm__title { font-size: 26px; }
   .pc-card { flex-direction: column; min-height: 0; }
   .pc-card__photo { width: 100%; height: 220px; }
   .pc-card__body { padding-top: 16px; padding-bottom: 20px; }
@@ -554,6 +549,9 @@ a.pc-linkcard:hover .pc-linkcard__url { color: #fff; }
   font-size: 32px;
   line-height: 1.4;
   font-weight: 600;
+}
+@media (max-width: 767px) {
+  .art__title { font-size: 26px; }
 }
 .art__date {
   margin: 0 0 24px;
@@ -610,6 +608,31 @@ a.pc-linkcard:hover .pc-linkcard__url { color: #fff; }
 }
 .art__share-list a:hover { color: var(--blue); }
 
+.art__back { display: none; }
+
+@media (max-width: 767px) {
+  .art .pc-crumbs { display: none; }
+  .art__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .art__back::before {
+    content: "←";
+    line-height: 1;
+  }
+  .art__cover { height: 295px; margin-bottom: 24px; }
+  .art__text p { font-size: 14px; }
+  .art__gallery { flex-direction: column; gap: 12px; }
+  .art__gallery span { width: 100%; height: 260px; }
+}
+
 /* Актуальная информация: сетка 4 × N */
 .act-grid {
   display: grid;
@@ -646,9 +669,15 @@ a.pc-linkcard:hover .pc-linkcard__url { color: #fff; }
   font-weight: 500;
 }
 
+@media (max-width: 767px) {
+  .act-grid { grid-template-columns: 1fr; gap: 20px; }
+  .act-card img { width: 100%; height: 260px; }
+  .act-card__title { font-weight: 600; }
+}
+
 /* Формы: поля 640 px, подпись 16 px, поле 48 px, рамка #d9d9d9 */
 .fm { width: 640px; max-width: 100%; }
-.fm__title { font-size: 36px; line-height: 1.3; font-weight: 600; }
+.fm__title { font-size: 36px; line-height: 1.4; font-weight: 600; }
 .fm__text { margin: 0 0 16px; font-size: 16px; line-height: 1.5; color: var(--ink); }
 .fm__section { margin: 56px 0 24px; }
 .fm__section:first-of-type { margin-top: 0; }
