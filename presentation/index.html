@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Дизайн-концепция сайта — Газпром газораспределение Великий Новгород</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="catalog-toggle" id="catalogToggle" type="button" aria-expanded="false" aria-controls="catalog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <span>Каталог</span>
+        </button>
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true">Г</span>
+          <span class="brand__text">
+            <span class="brand__title">Газпром газораспределение Великий Новгород</span>
+            <span class="brand__sub">Дизайн-концепция сайта</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="topbar__current">
+        <span class="current__label">Сейчас на экране</span>
+        <span class="current__name" id="currentName" aria-live="polite">Главная страница</span>
+      </div>
+
+      <div class="topbar__right">
+        <span class="topbar__badge">Интерактивная презентация</span>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="catalog" id="catalog" aria-label="Каталог шаблонов">
+        <div class="catalog__head">
+          <h1 class="catalog__title">Шаблоны страниц</h1>
+          <p class="catalog__hint">Выберите страницу — она откроется в рабочей области.</p>
+        </div>
+        <nav class="catalog__nav" id="catalogNav" aria-label="Список шаблонов"></nav>
+        <div class="catalog__foot">Дизайн-концепция · 2026</div>
+      </aside>
+
+      <main class="stage" id="stage">
+        <div class="stage__canvas" id="canvas">
+          <div class="frame frame--desktop" id="frame">
+            <iframe id="preview" title="Предпросмотр страницы" src="about:blank"></iframe>
+          </div>
+        </div>
+
+        <div class="notice" id="notice" hidden>
+          <div class="notice__card">
+            <span class="notice__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/><path d="M3 3l18 18"/></svg>
+            </span>
+            <h2 class="notice__title">Мобильная версия в подготовке</h2>
+            <p class="notice__text" id="noticeText">Для этого шаблона пока подготовлена только компьютерная версия.</p>
+            <button class="notice__btn" id="noticeDesktop" type="button">Открыть компьютерную версию</button>
+          </div>
+        </div>
+
+        <div class="loader" id="loader" role="status" hidden>
+          <span class="loader__spinner" aria-hidden="true"></span>
+          <span>Загрузка страницы…</span>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="catalog-backdrop" id="catalogBackdrop" hidden></div>
+
+  <div class="device-switch" role="group" aria-label="Режим просмотра">
+    <button class="device-btn is-active" type="button" data-device="desktop" aria-pressed="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      <span>Компьютер</span>
+    </button>
+    <span class="device-switch__sep" aria-hidden="true"></span>
+    <button class="device-btn" type="button" data-device="mobile" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
+      <span>Смартфон</span>
+    </button>
+  </div>
+
+  <script src="presentation.js"></script>
+</body>
+</html>
