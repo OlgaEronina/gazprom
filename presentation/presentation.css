@@ -553,8 +553,7 @@ svg { display: block; }
 }
 
 @media (max-width: 700px) {
-  .brand__sub { display: none; }
-  .brand__title { max-width: 190px; font-size: 12px; }
+  .brand__text { display: none; }
   .topbar__badge { display: none; }
   .current__label { display: none; }
   .current__name { max-width: 150px; font-size: 13px; }
